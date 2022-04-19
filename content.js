@@ -1,7 +1,8 @@
 console.log("content.js Loaded!");
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get("id");
-console.log("id ==>", id);
-// sndReq("action=to_thank&id=1782591", "saythankup");
+const id =  new URLSearchParams(window.location.search).get("id");
+if (id) {
+  const xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("get", "/ajax.php?" + `action=say_thanks&id=${id}`);
+  xmlHttp.send(null);
+}
