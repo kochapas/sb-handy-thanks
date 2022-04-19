@@ -1,8 +1,20 @@
 // Move sayThanks tr to the top of the table to make it more "Handy"
-const centerTbody = document.querySelector("center tbody");
+const centerTbody = document.querySelector("center>table>tbody");
 if (centerTbody) {
-  const lastTr = centerTbody.querySelector("tr:last-child");
-  centerTbody.innerHTML = lastTr.innerHTML + centerTbody.innerHTML;
+  const sayThanks = centerTbody.querySelector("tr #saythanks");
+  if (sayThanks) {
+    centerTbody.innerHTML =
+      sayThanks.parentElement.innerHTML + centerTbody.innerHTML;
+  } else {
+    centerTbody.innerHTML =
+      `<tr>
+        <td class="heading" valign="top" align="right">Thanks</td>
+        <td valign="top" align="left">
+          <img src="pic/smilies/thumbsup.gif">
+          Thanks เรียบร้อยแล้ว
+        </td>
+      </tr>` + centerTbody.innerHTML;
+  }
 }
 
 // Fetch the ID from URL parameter and send a "thanks" request to the server.
