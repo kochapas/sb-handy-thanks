@@ -1,19 +1,21 @@
+const thankedElement = `
+<tr>
+  <td class="heading" valign="top" align="right">Thanks</td>
+  <td valign="top" align="left">
+    <img src="pic/smilies/thumbsup.gif">
+    Thanks เรียบร้อยแล้ว
+  </td>
+</tr>`;
 // Move sayThanks tr to the top of the table to make it more "Handy"
 const centerTbody = document.querySelector("center>table>tbody");
 if (centerTbody) {
   const sayThanks = centerTbody.querySelector("tr #saythanks");
   if (sayThanks) {
-    centerTbody.innerHTML =
-      sayThanks.parentElement.innerHTML + centerTbody.innerHTML;
+    const sayThanksParent = sayThanks.parentElement;
+    sayThanksParent.id = "top-render-thanks"
+    centerTbody.innerHTML = sayThanksParent.outerHTML + centerTbody.innerHTML;
   } else {
-    centerTbody.innerHTML =
-      `<tr>
-        <td class="heading" valign="top" align="right">Thanks</td>
-        <td valign="top" align="left">
-          <img src="pic/smilies/thumbsup.gif">
-          Thanks เรียบร้อยแล้ว
-        </td>
-      </tr>` + centerTbody.innerHTML;
+    centerTbody.innerHTML = thankedElement + centerTbody.innerHTML;
   }
 }
 
@@ -26,6 +28,10 @@ if (id) {
       const xmlHttp = new XMLHttpRequest();
       xmlHttp.open("get", "/ajax.php?" + `action=say_thanks&id=${id}`);
       xmlHttp.send(null);
+      const topRenderThanks = document.getElementById("top-render-thanks");
+      if (topRenderThanks) {
+        topRenderThanks.outerHTML = thankedElement;
+      }
     }
   });
 }
