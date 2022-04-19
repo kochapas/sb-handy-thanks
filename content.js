@@ -9,8 +9,8 @@ if (centerTbody) {
 const id =  new URLSearchParams(window.location.search).get("id");
 if (id) {
   chrome.storage.sync.get("autoThanks", ({ autoThanks }) => {
-    console.log("autoThanks is on! Thanks to torrent ID ==>", id);
     if (autoThanks) {
+      console.log("autoThanks is on! Thanks to torrent ID ==>", id);
       const xmlHttp = new XMLHttpRequest();
       xmlHttp.open("get", "/ajax.php?" + `action=say_thanks&id=${id}`);
       xmlHttp.send(null);
