@@ -1,12 +1,12 @@
 {
   "name": "SB Handy Thanks",
   "description": "Show 'Thanks' button on Siambit at the same place with download button without a need to redirect to multiple pages",
-  "version": "1.0",
+  "version": "0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
