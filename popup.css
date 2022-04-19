@@ -1,6 +1,38 @@
 #popup-container {
+  width: 200px;
   margin: 0;
   padding: 4px;
   background-color: #eee;
   color: #333;
+  margin: auto;
+}
+
+#auto-on-status {
+  color: #d33;
+  padding: 0;
+  margin: 0 8px 0 8px;
+}
+
+#trigger-auto-btn {
+  background-color: #eee;
+  border: 1px solid #333;
+  border-radius: 5%;
+  padding: 4px 12px 4px 12px;
+  width: 100%;
+}
+
+#trigger-auto-btn:hover {
+  background-color: #bbb;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  display: flex;
+}
+
+td a {
+  text-align: center;
 }
