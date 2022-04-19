@@ -1,5 +1,3 @@
-console.log("content.js Loaded!");
-
 // Move sayThanks tr to the top of the table to make it more "Handy"
 const centerTbody = document.querySelector("center tbody");
 if (centerTbody) {
@@ -11,7 +9,7 @@ if (centerTbody) {
 const id =  new URLSearchParams(window.location.search).get("id");
 if (id) {
   chrome.storage.sync.get("autoThanks", ({ autoThanks }) => {
-    console.log("autoThanks ==>", autoThanks);
+    console.log("autoThanks is on! Thanks to torrent ID ==>", id);
     if (autoThanks) {
       const xmlHttp = new XMLHttpRequest();
       xmlHttp.open("get", "/ajax.php?" + `action=say_thanks&id=${id}`);

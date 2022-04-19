@@ -3,7 +3,7 @@ console.log("Popup.js Loaded!");
 const statusText = document.querySelector("#auto-on-status");
 if (statusText) {
   chrome.storage.sync.get("autoThanks", ({ autoThanks }) => {
-    console.log("initial ==>", autoThanks);
+    console.log("autoThanks initial ==>", autoThanks);
     if (!autoThanks) {
       statusText.innerText = "Off";
       statusText.style.color = "#d33";
@@ -16,10 +16,9 @@ if (statusText) {
 
 const triggerAutoBtn = document.querySelector("#trigger-auto-btn");
 if (triggerAutoBtn) {
-  console.log("switchAutoThanks ==>",);
   triggerAutoBtn.addEventListener("click", () => {
     chrome.storage.sync.get("autoThanks", ({ autoThanks }) => {
-      console.log("current autoThanks ==>", autoThanks);
+      console.log("autoThanks before switch ==>", autoThanks);
       if (autoThanks) {
         statusText.innerText = "Off";
         statusText.style.color = "#d33";
