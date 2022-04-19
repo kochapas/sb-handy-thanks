@@ -10,7 +10,12 @@ if (centerTbody) {
 // Fetch the ID from URL parameter and send a "thanks" request to the server.
 const id =  new URLSearchParams(window.location.search).get("id");
 if (id) {
-  const xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("get", "/ajax.php?" + `action=say_thanks&id=${id}`);
-  xmlHttp.send(null);
+  chrome.storage.sync.get("autoThanks", ({ autoThanks }) => {
+    console.log("autoThanks ==>", autoThanks);
+    if (autoThanks) {
+      const xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("get", "/ajax.php?" + `action=say_thanks&id=${id}`);
+      xmlHttp.send(null);
+    }
+  });
 }
